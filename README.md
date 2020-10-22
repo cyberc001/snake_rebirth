@@ -1,9 +1,9 @@
-#Snake:Rebirth
+# Snake:Rebirth
 
-##[ENG]
-###Description
+## [ENG]
+### Description
 Snake:Rebirth is a small project I do in my spare time. It's basically a whole new fresh take on the Snake game you can remember playing on your old primitive cell phone. One of this project's most interesting features is that it's written entirely in C programming language and it doesn't use anything besides the most basic tools; for Linux, they're X11, OpenGL and POSIX threads. For now, engine is integrated in the game because I am too lazy to study makefiles properly.
-###Current state
+### Current state
 Project is in active development.
 What is ready:
 - Event handling engine
@@ -21,12 +21,12 @@ What should be done in the future:
 - Not-so-basic main menu (options)
 - Level format (with scripting!)
 
-##[RUS]
-###Описание
+## [RUS]
+### Описание
 Snake:Rebirth это мой небольшой проект, которым я занимаюсь в свободное время. По сути, это свежий взгляд на игру "Змейка", в которую вы когда-то играли на старом мобильнике. Одна из самых интересных 
 черт данного проекта - это то, что он полностью написан на языке Си и не использует ничего, кроме самых базовых средств; на Linux это X11, OpenGL и потоки POSIX. На данный момент движок встроен в игру, 
 так как мне лень тщательно изучить makefile'ы.
-###Текущее состояние
+### Текущее состояние
 Проект находится в активной разработке.
 Что уже готово:
 - Движок по обработке событий
