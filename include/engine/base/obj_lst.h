@@ -1,7 +1,7 @@
 #ifndef OBJ_LST_H
 #define OBJ_LST_H
 
-#include "engine/obj.h"
+#include "engine/base/obj.h"
 
 typedef struct obj_lst obj_lst;
 struct obj_lst

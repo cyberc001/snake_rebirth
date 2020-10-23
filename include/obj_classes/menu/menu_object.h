@@ -1,7 +1,7 @@
 #ifndef MENU_OBJECT_H
 #define MENU_OBJECT_H
 
-#include "engine/obj.h"
+#include "engine/base/obj.h"
 
 cls __class__menu_object;
 

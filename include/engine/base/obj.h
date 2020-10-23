@@ -4,8 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "engine/class.h"
-#include "engine/canvas.h"
+#include "engine/base/class.h"
+#include "engine/base/canvas.h"
 typedef struct obj_lst obj_lst;
 
 typedef struct obj obj;

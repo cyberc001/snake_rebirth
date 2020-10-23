@@ -7,24 +7,24 @@ all: main.o canvas.o  obj.o obj_lst.o  scene.o  ticker.o  menu_object.o menu_but
 main.o: ./src/main.c
 	$(CC) $(OFLAGS) ./src/main.c
 
-canvas.o: ./src/engine/canvas.c
-	$(CC) $(OFLAGS) ./src/engine/canvas.c
+canvas.o: ./src/engine/base/canvas.c
+	$(CC) $(OFLAGS) ./src/engine/base/canvas.c
 
-obj.o: ./src/engine/obj.c  ./include/engine/class.h ./include/engine/canvas.h
-	$(CC) $(OFLAGS) ./src/engine/obj.c
-obj_lst.o: ./src/engine/obj_lst.c  ./include/engine/obj.h
-	$(CC) $(OFLAGS) ./src/engine/obj_lst.c
+obj.o: ./src/engine/base/obj.c  ./include/engine/base/class.h ./include/engine/base/canvas.h
+	$(CC) $(OFLAGS) ./src/engine/base/obj.c
+obj_lst.o: ./src/engine/base/obj_lst.c  ./include/engine/base/obj.h
+	$(CC) $(OFLAGS) ./src/engine/base/obj_lst.c
 
-scene.o: ./src/engine/scene.c  ./include/engine/obj_lst.h
-	$(CC) $(OFLAGS) ./src/engine/scene.c
+scene.o: ./src/engine/base/scene.c  ./include/engine/base/obj_lst.h
+	$(CC) $(OFLAGS) ./src/engine/base/scene.c
 
-ticker.o: ./src/engine/ticker.c
-	$(CC) $(OFLAGS) ./src/engine/ticker.c
+ticker.o: ./src/engine/base/ticker.c
+	$(CC) $(OFLAGS) ./src/engine/base/ticker.c
 
-menu_object.o: ./src/obj_classes/menu/menu_object.c  ./include/engine/obj.h
+menu_object.o: ./src/obj_classes/menu/menu_object.c  ./include/engine/base/obj.h
 	$(CC) $(OFLAGS) ./src/obj_classes/menu/menu_object.c
 menu_button.o: ./src/obj_classes/menu/menu_button.c  ./include/obj_classes/menu/menu_object.h
 	$(CC) $(OFLAGS) ./src/obj_classes/menu/menu_button.c
 
-main_menu.o: ./src/scenes/main_menu.c  ./include/engine/scene.h ./include/engine/obj_lst.h ./include/obj_classes/menu/menu_button.h
+main_menu.o: ./src/scenes/main_menu.c  ./include/engine/base/scene.h ./include/engine/base/obj_lst.h ./include/obj_classes/menu/menu_button.h
 	$(CC) $(OFLAGS) ./src/scenes/main_menu.c

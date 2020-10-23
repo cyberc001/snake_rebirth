@@ -2,8 +2,8 @@
 
 #include <pthread.h>
 
-#include "engine/canvas.h"
-#include "engine/class.h"
+#include "engine/base/canvas.h"
+#include "engine/base/class.h"
 
 #include "obj_classes/menu/menu_button.h"
 #include "scenes/main_menu.h"

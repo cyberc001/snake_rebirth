@@ -1,7 +1,7 @@
 #ifndef SCENE_H
 #define SCENE_H
 
-#include "engine/obj_lst.h"
+#include "engine/base/obj_lst.h"
 
 #include <stdarg.h>
 
