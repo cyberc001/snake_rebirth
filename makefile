@@ -2,8 +2,8 @@ CC = tcc
 FLAGS = -Iinclude
 OFLAGS = $(FLAGS) -c -o ./obj/$@
 
-all: main.o canvas.o  obj.o obj_lst.o  scene.o  ticker.o  menu_object.o menu_button.o  main_menu.o
-	$(CC) $(FLAGS) ./obj/*.o -o snake -lm -lGL -lX11 -lpthread
+all: main.o canvas.o  obj.o obj_lst.o  scene.o  ticker.o  pixmap.o sprite.o  menu_object.o menu_button.o  main_menu.o
+	$(CC) $(FLAGS) ./obj/*.o -o snake -lm -lGL -lX11 -lpthread -lpng
 main.o: ./src/main.c
 	$(CC) $(OFLAGS) ./src/main.c
 
@@ -20,6 +20,11 @@ scene.o: ./src/engine/base/scene.c  ./include/engine/base/obj_lst.h
 
 ticker.o: ./src/engine/base/ticker.c
 	$(CC) $(OFLAGS) ./src/engine/base/ticker.c
+
+pixmap.o: ./src/engine/graphics/pixmap.c
+	$(CC) $(OFLAGS) ./src/engine/graphics/pixmap.c
+sprite.o: ./src/engine/graphics/sprite.c
+	$(CC) $(OFLAGS) ./src/engine/graphics/sprite.c
 
 menu_object.o: ./src/obj_classes/menu/menu_object.c  ./include/engine/base/obj.h
 	$(CC) $(OFLAGS) ./src/obj_classes/menu/menu_object.c
