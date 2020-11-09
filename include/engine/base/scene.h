@@ -14,7 +14,7 @@ typedef struct scene scene;
 struct scene
 {
 	// Scenes are defined the same way as classes - initialized global variables, i.e:
-	// scene __scene_ex = {NULL, {NULL, NULL}, SCENE_FLAGS_RECIEVE_EVENTS, NULL, 16, &__scene__init, &__scene__iterate, NULL, NULL, {&__scene__on_key_press, &__scene__on_key_release, NULL, NULL, NULL}};
+	// scene __scene_ex = {NULL, {NULL, NULL}, SCENE_FLAGS_RECIEVE_EVENTS, NULL, NULL, 16, &__scene__init, &__scene__iterate, NULL, NULL, {&__scene__on_key_press, &__scene__on_key_release, NULL, NULL, NULL}};
 
 	// NULL by default; can be set during initialization to carry it on to iterate().
 	// it's not recommended to use global variables instead of this pointer, even if they're static.
@@ -33,10 +33,11 @@ struct scene
 	char state_flags;
 	// The child scene or NULL. Used for processing events, starting from the current scene.
 	struct scene *child;
+	pthread_t child_thread;
 
 	long ms_betwn_iters; // minimum amount of milliseconds between iterations.
 	void (*init)(struct scene *scn_self, va_list args);
-	void (*iterate)(struct scene *scn_self, struct scene **cur_scn_ptr, va_list args);
+	void (*iterate)(struct scene *scn_self);
 
 	// NULL by default, defined by engine user, and called during "initialization phase" if supported.
 	// Can be left as NULL for scenes that do not load that long.
@@ -59,7 +60,9 @@ struct scene
 // runs init() one time.
 void scene__init(scene *scn_self, ...);
 // repeats iterate() until SCENE_FLAGS_RUNNING is 0 at state_flags.
-void scene__run(scene *scn_self, scene **cur_scn_ptr, ...);
+void scene__run(scene *scn_self);
+// runs scene__run in a separate thread.
+void scene__run_th(scene *scn_self);
 
 // invokes appropriate events, iterating through scene "inheritance" (aka child pointer)
 void scene__on_key_press(struct scene *scn_self, canvas *cv, unsigned int keycode);

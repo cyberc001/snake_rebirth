@@ -1,5 +1,7 @@
 #include "engine/base/scene.h"
 
+#include <pthread.h>
+
 #include <time.h>
 #include <math.h>
 
@@ -10,11 +12,8 @@ void scene__init(scene *scn_self, ...)
 	scn_self->init(scn_self, args);
 	va_end(args);
 }
-void scene__run(scene *scn_self, scene **cur_scn_ptr, ...)
+void scene__run(scene *scn_self)
 {
-	va_list args;
-	va_start(args, cur_scn_ptr);
-
 	struct timespec ctime, stime;
 	long time_ms_beg, time_ms_diff;
 
@@ -27,7 +26,7 @@ void scene__run(scene *scn_self, scene **cur_scn_ptr, ...)
 		scene *scn_iter = scn_self;
 		while(scn_iter)
 		{
-			scn_iter->iterate(scn_self, cur_scn_ptr, args);
+			scn_iter->iterate(scn_self);
 			scn_iter = scn_iter->child;
 		}
 
@@ -38,8 +37,15 @@ void scene__run(scene *scn_self, scene **cur_scn_ptr, ...)
 		stime.tv_nsec = (time_ms_diff % 1000) * 1000000;
 		nanosleep(&stime, NULL);
 	}
-
-	va_end(args);
+}
+void __scene_run_thread_func(void* args)
+{
+	scene__run((scene*)args);
+}
+void scene__run_th(scene *scn_self)
+{
+	pthread_t scene_th;
+	pthread_create(&scene_th, NULL, &__scene_run_thread_func, scn_self);
 }
 
 void scene__on_key_press(struct scene *scn_self, canvas *cv, unsigned int keycode)

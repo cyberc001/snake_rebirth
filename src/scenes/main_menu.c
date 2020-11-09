@@ -5,7 +5,7 @@
 
 #include "obj_classes/menu/menu_button.h"
 
-scene __scene_main_menu = {NULL, {NULL, NULL}, SCENE_FLAGS_RECIEVE_EVENTS, NULL, 100, &__scene_main_menu__init, &__scene_main_menu__iterate, NULL, NULL, {&__scene_main_menu__on_key_press, NULL, NULL, NULL, NULL}};
+scene __scene_main_menu = {NULL, {NULL, NULL}, SCENE_FLAGS_RECIEVE_EVENTS, NULL, 0, 100, &__scene_main_menu__init, &__scene_main_menu__iterate, NULL, NULL, {&__scene_main_menu__on_key_press, NULL, NULL, NULL, NULL}};
 
 void __scene_main_menu__init(struct scene *scn_self, va_list args)
 {
